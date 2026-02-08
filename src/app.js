@@ -18,5 +18,9 @@ const notes={
 
 const notes=[]
 
+app.post('/notes',(req,res)=>{
+    
+})
+
 
 module.exports=app;
