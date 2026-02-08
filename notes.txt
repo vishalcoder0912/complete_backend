@@ -1,5 +1,11 @@
 npm init -y -> node js application initiate 
 
 npm i express=>  npm install express
-
+ 
 server.js
+
+types of APi by architectureal style/protocol
+Rest (Representational state transfer )APIs:
+these are the most command type of web api know for their statelessness and use of standard http 
+methods (get,post,put,delete) to interect with resources data are typically exchange foramt like json 
+or xml
