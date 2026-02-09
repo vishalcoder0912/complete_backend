@@ -18,11 +18,31 @@ const notes={
 
 const notes=[]
 
-app.post('/notes',(req,res)=>{
+app.use(express.json())
 
-console.log(req.body);
+app.post('/notes',(req,res)=>{
+notes.push(req.body)
+res.status(201).json({
+    message:"note created succcessfully"
+})
+})
+
+app.get('/notes',(req,res)=>{
+    res.status(200).json({
+        Message:"notes fetched successfully",
+        notes:notes
+    })
+})
+
+app.delete('/notes/:index',(req,res)=>{
+   const index= req.params.index
+    delete notes[index]
+    res.status(200).json({
+        message:"note deleted successfully"
+    })
 
 })
+
 
 
 module.exports=app;
