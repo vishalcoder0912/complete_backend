@@ -1,62 +1,172 @@
-Explain what an API endpoint is?
-An API endpoint is a specific URL that acts as an entry point into a specific service or a functionality within a service.
+# Backend Development – Core Concepts
 
-Through an API endpoint, client applications can interact with the server sending requests (sometimes even with data in the form of payload) and receive a response from it.
+This README covers some **fundamental backend concepts** that every backend or full‑stack developer should clearly understand. These topics are frequently asked in interviews and are essential for building scalable, secure web applications.
 
-Usually, each endpoint can be mapped to a single feature inside the server.
+---
 
+## 1. What is an API Endpoint?
 
+An **API endpoint** is a specific **URL** that acts as an entry point to a service or functionality provided by a backend system.
 
-Can you explain the difference between SQL and NoSQL databases?
-SQL databases (or relational databases as they’re also known) rely on a predefined schema (or structure) for their data. Whenever you describe a record, or table inside the database, you do so through its format (name and fields).
+### Key Points:
 
-In NoSQL databases, there is no schema, so there is no predefined structure to the data. You usually have collections of records that are not obligated to have the same structure, even if they represent conceptually the same thing.
+* It defines **where** and **how** a client can access a resource
+* Clients send **HTTP requests** (GET, POST, PUT, DELETE, etc.) to endpoints
+* The server processes the request and returns a **response** (usually JSON)
 
+### Example:
 
+```
+GET https://api.example.com/users/123
+```
 
-What is a RESTful API, and what are its core principles?
-For an API to be RESTful (which means it complies with the REST guidelines), it needs to:
+This endpoint fetches details of the user with ID `123`.
 
-It needs to follow a client-server architecture (which all HTTP-based services do).
+👉 Typically, **one endpoint maps to one feature** or action in the backend.
 
-It has to provide a uniform interface which means:
+---
 
-There should be a way to identify resources from each other through URIs (Unique Resource Identification).
+## 2. Difference Between SQL and NoSQL Databases
 
-There should be a way to modify resources through their representation.
+### SQL Databases (Relational Databases)
 
-Messages should be self descriptive, meaning that each message should provide enough information to understand how to process it.
+SQL databases use a **predefined schema**, meaning the structure of the data is fixed.
 
-Clients using the API should be able to discover actions available for the current resource using the provided response from the server (this is known as HATEOAS or Hypermedia as the Engine of Application State).
+#### Characteristics:
 
-It needs to be stateless, which means each request to the server must contain all information to process the request.
+* Data stored in **tables** (rows and columns)
+* Strong **schema enforcement**
+* Uses **SQL (Structured Query Language)**
+* Supports **ACID** properties (Atomicity, Consistency, Isolation, Durability)
 
-It should be a layered system, meaning that client and server don’t have to be connected directly to each other, there might be intermediaries, but that should not affect the communication between client and server.
+#### Examples:
 
+* MySQL
+* PostgreSQL
+* Oracle
+* SQL Server
 
+---
 
+### NoSQL Databases
 
-How would you handle file uploads in a web application?
-From a backend developer perspective, the following considerations should be taken into account when handling file uploads regardless of the programming language you’re using:
+NoSQL databases are **schema-less** or have a **flexible schema**.
 
-Perform server-side validations. Validate that the size of your file is within range, and that the file is of the required type. You can check this OWASP guide for more details.
+#### Characteristics:
 
-Use secure channels. Make sure the file upload is done through an HTTPS connection.
+* Data stored as **documents, key-value pairs, graphs, or columns**
+* Records in the same collection **do not need identical structure**
+* Highly **scalable** and **flexible**
 
-Avoid name collision. Rename the file ensuring the new filename is unique within your system. Otherwise this can lead to application errors by not being able to save the uploaded files.
+#### Examples:
 
-Keep metadata about your files. Store it in your database or somewhere else, but make sure to keep track of it, so you can provide extra information to your users. Also, if you’re renaming the files for security and to avoid name collisions, keep track of the original filename in case the file needs to be downloaded back by the user.
+* MongoDB (Document-based)
+* Redis (Key-value)
+* Cassandra (Column-based)
+* Neo4j (Graph-based)
 
+### Summary Table:
 
+| Feature     | SQL          | NoSQL                    |
+| ----------- | ------------ | ------------------------ |
+| Schema      | Fixed        | Flexible                 |
+| Scalability | Vertical     | Horizontal               |
+| Structure   | Tables       | Collections / Documents  |
+| Use Case    | Banking, ERP | Big Data, Real-time Apps |
 
+---
 
+## 3. What is a RESTful API?
 
+A **RESTful API** is an API that follows the **REST (Representational State Transfer)** architectural principles.
 
+### Core REST Principles:
 
+#### 1. Client-Server Architecture
 
+* Client and server are **independent**
+* Improves scalability and separation of concerns
 
+#### 2. Uniform Interface
 
+Includes the following constraints:
 
-Resources should be cacheable either by client or by server.
+* **Resource Identification** using URIs
+* **Resource Manipulation** through representations (JSON, XML)
+* **Self-descriptive Messages** (headers + body explain how to process request)
+* **HATEOAS** (Hypermedia as the Engine of Application State)
 
-Optionally, the server could send code to the client for it to execute (known as “Code on Demand”).
+#### 3. Statelessness
+
+* Every request must contain **all required information**
+* Server does not store client session data
+
+#### 4. Cacheability
+
+* Responses should be **cacheable** by client or server when possible
+
+#### 5. Layered System
+
+* Client doesn’t know if it’s connected directly to server or through intermediaries
+
+#### 6. Code on Demand (Optional)
+
+* Server may send executable code to the client (e.g., JavaScript)
+
+---
+
+## 4. Handling File Uploads in a Web Application
+
+Handling file uploads securely is a **critical backend responsibility**.
+
+### Best Practices:
+
+#### 1. Server-side Validation
+
+* Validate **file size**
+* Validate **file type / MIME type**
+* Prevent malicious file uploads
+
+🔐 Refer: OWASP File Upload Security Guidelines
+
+---
+
+#### 2. Use Secure Channels
+
+* Always upload files using **HTTPS**
+* Prevent data interception
+
+---
+
+#### 3. Avoid Filename Collisions
+
+* Rename uploaded files using:
+
+  * UUIDs
+  * Timestamps
+
+Example:
+
+```
+user_profile_9f3a21.png
+```
+
+---
+
+#### 4. Store File Metadata
+
+Keep track of:
+
+* Original filename
+* Stored filename
+* File size
+* Upload timestamp
+* User ID
+
+This helps in:
+
+* File downloads
+* Auditing
+* Debugging
+
+---

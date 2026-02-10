@@ -1,5 +1,26 @@
 npm init -y -> node js application initiate 
 
 npm i express=>  npm install express
-
+ 
 server.js
+
+types of APi by architectureal style/protocol
+Rest (Representational state transfer )APIs:
+these are the most command type of web api know for their statelessness and use of standard http 
+methods (get,post,put,delete) to interect with resources data are typically exchange foramt like json 
+or xml
+
+
+I
+
+GET => server se data fetch karva ho tb use krten hai
+POST => server pr data send krna ho
+PATCH => server pr data already hai aur us data ko update krna ho tb use krten hai
+DELETE => server pr data hai aur us delete krna hai  
+
+params 
+delete
+get 
+200 
+201 
+express.json give the ability to read the data that already in req.body
