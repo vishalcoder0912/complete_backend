@@ -209,6 +209,196 @@ Session management follows these steps:
 
 👉 Redis is preferred for scalability and high performance.
 
+8. What kind of tests would you write for a new API endpoint?
+What the interviewer wants to check
+
+Your understanding of testing layers and real-world backend quality practices.
+
+Ideal Interview Answer
+
+When creating a new API endpoint, I focus on three main types of tests:
+
+Unit Tests
+
+Validate business logic only
+
+Test via public methods, not private functions
+
+Mock external dependencies like databases or APIs
+
+Integration Tests
+
+Test the actual HTTP endpoint
+
+Verify interaction with databases and external services
+
+Load / Performance Tests
+
+Check how the endpoint behaves under high traffic
+
+Usually done before production release
+
+9. How does session management work in web applications?
+What the interviewer wants to check
+
+Your understanding of state handling and authentication flow.
+
+Ideal Interview Answer
+
+Session management works as follows:
+
+User logs in and backend creates a unique session ID
+
+Session data is stored in a database or in-memory store like Redis
+
+Session ID is sent to the client using cookies
+
+Client sends the session ID with every request
+
+Backend retrieves session data using the ID
+
+Session expires or is destroyed during logout
+
+10. How do you approach API versioning?
+What the interviewer wants to check
+
+Your ability to maintain backward compatibility.
+
+Ideal Interview Answer
+
+The two most common approaches are:
+
+URL-based versioning: /v1/users
+
+Header-based versioning: api-version: 1
+
+URL-based versioning is more visible and commonly used.
+
+11. How do you protect a server from SQL injection attacks?
+What the interviewer wants to check
+
+Your knowledge of backend security fundamentals.
+
+Ideal Interview Answer
+
+I use the following strategies:
+
+Prepared statements with parameterized queries
+
+ORM frameworks that generate secure SQL
+
+Escaping user input (only if manual queries are unavoidable)
+
+12. Explain statelessness in HTTP
+What the interviewer wants to check
+
+Your understanding of scalability concepts.
+
+Ideal Interview Answer
+
+HTTP is stateless, meaning every request is independent. The server does not store client state between requests, which improves scalability and reliability.
+
+13. What is containerization?
+What the interviewer wants to check
+
+Your understanding of modern deployment practices.
+
+Ideal Interview Answer
+
+Containerization packages an application with its dependencies to ensure consistent execution across environments. Docker is a common example.
+
+14. How do you secure a newly developed API?
+Ideal Interview Answer
+
+Implement authentication (JWT, OAuth)
+
+Use HTTPS for encrypted communication
+
+Apply strong authorization and CORS policies
+
+15. How do you scale a backend application during traffic surges?
+Ideal Interview Answer
+
+By using horizontal scaling, deploying multiple stateless instances behind a load balancer.
+
+16. How do you debug backend applications?
+Ideal Interview Answer
+
+Locally: IDE debuggers
+
+Production: Logging, monitoring tools like NewRelic
+
+17. How do you ensure backend code maintainability?
+Ideal Interview Answer
+
+I follow modular design, naming conventions, regular refactoring, consistent error handling, and automated testing.
+
+🔹 Intermediate-Level Backend Questions
+18. How would you implement full-text search?
+Ideal Interview Answer
+
+Use database-native full-text search or search engines like ElasticSearch. A custom solution involves tokenization, inverted indexing, and scoring.
+
+19. How do you handle batch processing?
+Ideal Interview Answer
+
+By using distributed processing frameworks like Hadoop or Spark for parallel execution.
+
+20. What is a message queue and why is it useful?
+Ideal Interview Answer
+
+Message queues enable asynchronous, event-driven communication between services, improving scalability and decoupling.
+
+21. How do you manage database connections under high load?
+Ideal Interview Answer
+
+Using connection pooling, query optimization, and database load balancing.
+
+22. How do you implement CI/CD for backend services?
+Ideal Interview Answer
+
+By triggering pipelines via Git, running automated tests, deploying only on success, and maintaining rollback strategies.
+
+23. What is distributed caching?
+Ideal Interview Answer
+
+Distributed caching uses clustered cache servers with sharding, replication, and cache invalidation to improve performance and availability.
+
+24. How do you manage background tasks?
+Ideal Interview Answer
+
+Using message queues, background job frameworks, or cron jobs depending on the use case.
+
+25. How do you handle data encryption in backend systems?
+Ideal Interview Answer
+
+Data in transit: HTTPS/TLS
+
+Data at rest: AES/RSA with secure key management
+
+26. What are webhooks?
+Ideal Interview Answer
+
+Webhooks are event-driven HTTP callbacks used to notify systems asynchronously.
+
+27. What are GDPR considerations in backend systems?
+Ideal Interview Answer
+
+Collect minimal data, obtain consent, secure data, and allow users to access or delete their data.
+
+28. How do you handle long-running processes?
+Ideal Interview Answer
+
+By converting requests into asynchronous jobs using message queues and notifying clients upon completion.
+
+29. How do you implement API rate limiting?
+Ideal Interview Answer
+
+Define limits, choose an algorithm like token bucket, store counters in Redis, and return HTTP 429 when exceeded.
+
+
+
+
 ---
 
 
