@@ -169,4 +169,47 @@ This helps in:
 * Auditing
 * Debugging
 
+
+
+## 5. What kind of tests would you write for a new API endpoint?
+
+When developing a new API endpoint, multiple testing layers should be considered:
+
+### Unit Tests
+
+* Test only the **business logic**
+* Use **public interfaces only** (avoid private methods)
+* Mock external dependencies (DB, file system, APIs)
+* Fast and deterministic
+
+### Integration Tests
+
+* Test the **actual HTTP endpoint**
+* Verify interaction with databases and external services
+* Ensures different components work together correctly
+
+### Load / Performance Tests
+
+* Simulate high traffic scenarios
+* Validate stability under stress
+* Usually performed before production release
+
+---
+
+## 6. How does session management work in web applications?
+
+Session management follows these steps:
+
+1. **Session Creation** – Backend creates a unique session ID during login
+2. **Session Storage** – Session data stored in DB or in-memory store (e.g., Redis)
+3. **Session ID Delivery** – Sent to client via cookies
+4. **Client Identification** – Client sends session ID with every request
+5. **Session Access** – Backend retrieves session data using session ID
+6. **Session Termination** – Session expires or is explicitly destroyed
+
+👉 Redis is preferred for scalability and high performance.
+
+---
+
+
 ---
